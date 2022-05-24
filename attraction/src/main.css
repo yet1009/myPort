@@ -15,7 +15,7 @@ ul,li { padding: 0; }
 .frame .lists { position: relative; height: 100%;  }
 .frame .lists > li { position: absolute; top: 0; width: 100%; height: 100%; vertical-align: top; }
 
-.list1 { left: 0; border: 1px solid red; }
-.list2 { left: 100%; border: 1px solid orange; }
-.list3 { left: 200%; border: 1px solid yellow; }
-.list4 { left: 300%; border: 1px solid tomato; }
+.list1 { left: 0; background-color:salmon; }
+.list2 { left: 100%; background-color: khaki; }
+.list3 { left: 200%; background-color: #88B2CC; }
+.list4 { left: 300%; background-color: #658EA9; }
