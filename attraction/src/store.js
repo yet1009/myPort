@@ -12,6 +12,10 @@ const Store = [
         title: "NH농협 캐피탈(NH Capital)",
 
     },
+    {
+        no: 4,
+        title: "abcdefg"
+    }
 ]
 
 export default Store
