@@ -10,10 +10,11 @@ ul,li { padding: 0; }
 
 
 /* 프로젝트 리스트 */
-.box2 { height: 500px; box-sizing: border-box; _border: 1px solid lime; }
-.frame { width: 100%; height: 100%; overflow: hidden; }
-.frame .lists { position: relative; height: 100%;  }
-.frame .lists > li { position: absolute; top: 0; width: 100%; height: 100%; vertical-align: top; }
+.container { position: relative; }
+.box2 { position: relative; box-sizing: border-box; border: 1px solid red; }
+.box2.on .lists { position: absolute; left: 0; top: 0; }
+.lists { overflow: hidden; position: relative; _position: absolute; _top: 50%; _transform: translateY(-50%); width: 100%; height: 100%; box-sizing: border-box; }
+.lists > li { position: absolute; top: 0; width: 100%; height: 700px; vertical-align: top; }
 
 .list1 { left: 0; background-color:salmon; }
 .list2 { left: 100%; background-color: khaki; }
