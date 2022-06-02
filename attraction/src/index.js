@@ -2,86 +2,120 @@ import Store from './store.js';
 import { qs, qsAll, delegate, on } from './dom.js';
 
 
-const sceneInfo = [
-    {
-        heightNum: 2,
-        selector: {
-            container: qs('.box1'),
-        }
-    },
-    {
-        heightNum: 4,
-        selector: {
-            container: qs('.box2'),
-            part1: qs('.box2 .frame .lists .list1'),
-            part2: qs('.box2 .frame .lists .list2'),
-            part3: qs('.box2 .frame .lists .list3'),
-            part4: qs('.box2 .frame .lists .list4'),
-        }
-    },
-    {
-        heightNum: 2,
-        selector: {
-            container: qs('.box3')
-        }
-    }
-]
-
-
-// 임시 영역 높이 지정
-function tempHeight() {
-
-    
-    for(let i = 0; i < sceneInfo.length; i++) {
-        sceneInfo[i].selector.container.style.height = window.innerHeight * sceneInfo[i].heightNum + "px"
-    }
-
-    // let box1 = qs('.box1');
-    // let box3 = qs('.box3');
-    // let obj = {
-    //     height: document.documentElement.clientHeight,
-    //     num: 4,
-    // } 
-    // let { height, num } = obj;
-    // box1.style.height = (height * 4) + "px";
-    // box1.style.backgroundColor = "#ECE5C7";
-
-    // box3.style.height = (height * 4) + "px";
-    // box3.style.backgroundColor = "#CDC2AE"
+function a(fn) {
+    console.log(fn(3))
 }
 
-tempHeight()
+a(item => item+1)
 
+// (() => {
 
+//     let yOffset = 0;
+//     let prevScrollHeight = 0;
+//     let currentScene = 0;
 
-// // 특정위치 스크롤 이벤트
-function fixedSection() {
-            
-    const { innerHeight, pageYOffset } = window;
-    const box2 = qs('.box2')
-    const box1 = qs('.box1');
-    let { top, bottom } = box2.getBoundingClientRect()
-    let box1H  = box1.clientHeight
-    let targetH  = box2.clientHeight
+//     const objs = [
+//         {
+//             box : qs('.box1'),
+//             heightNum: 3,
+//             scrollH: 0,
+//         },
+//         {
+//             box: qs('.box2'),
+//             heightNum: 5,
+//             scrollH: 0,
+//         },
+//         {
+//             box: qs('.box3'),
+//             heightNum: 3,
+//             scrollH: 0,
+//         }
+//     ]
 
     
-    if(top <= 0) {
-        box2.classList.add('on')
-    }
+//     function setLayout() {
+
+//         for(let i = 0; i < objs.length; i++) {
+
+//             objs[i].scrollH = objs[i].heightNum * window.innerHeight;
+//             objs[i].box.style.height = `${objs[i].scrollH}px`
+//         }
+
+//         let totalScrollHeight = 0;
+//         yOffset = window.pageYOffset;
+//         for(let i = 0; i < objs.length; i++) {
+//             totalScrollHeight += objs[i].scrollH;
+//             if(totalScrollHeight > yOffset) {
+//                 currentScene = i;
+//                 break;
+//             }
+//         }
+
+//         // console.log(totalScrollHeight);
+//     }
+
+//     function scrollLoop() {
+//         prevScrollHeight = 0;
+
+//         for(let i = 0; i < currentScene; i++) {
+//             prevScrollHeight += objs[i].scrollH;
+//         }
+
+//         if (yOffset > prevScrollHeight + objs[currentScene].scrollH) {
+//             currentScene++;
+//         }
+
+//         if(yOffset < prevScrollHeight) {
+//             if(currentScene === 0) return;
+//             currentScene--;
+//         }
+    
+//         playAnimation()
+//     }
+
+//     function playAnimation() {
+
+//         let parts = qs('.lists');
+//         let lis = qsAll('.lists > li');
+
+//         const currentYOffset = yOffset - prevScrollHeight;
+//         const scrollRatio = currentYOffset / objs[currentScene].scrollH;
+
+//         // parts.classList.remove('on');
+        
+//         switch(currentScene) {
+//             case 1 :
+                
+//                 // console.log(/ objs[currentScene].scrollH);
+//                 // console.log(scrollRatio);
+//                 if(scrollRatio >=0 && scrollRatio <= 0.25) {
+//                     lis[0].classList.add('on')
+//                 }else if(scrollRatio > 0.25 && scrollRatio <= 0.50) {
+//                     lis[1].classList.add('on')
+//                 }else if(scrollRatio > 0.50 && scrollRatio <= 0.75){
+//                     lis[2].classList.add('on')
+//                 }else {
+//                     lis[3].classList.add('on')
+//                 }
 
 
-    // console.log(top);
-    // console.log(pageYOffset);
-    // console.log(pageYOffset, box1H);
+//                 break;
+//         }
 
-    // console.log(targetH);
-    // console.log(top + pageYOffset - targetH <= pageYOffset && bottom + pageYOffset - targetH > pageYOffset );
-}
+//     }
 
 
-on(document, "scroll", () => {
 
-    fixedSection()
 
-})
+
+    
+//     window.addEventListener('load', setLayout)
+//     window.addEventListener('scroll', () => {
+//         yOffset = window.pageYOffset;
+//         scrollLoop()
+//     })
+//     window.addEventListener('resize', setLayout)
+
+// })()
+
 
